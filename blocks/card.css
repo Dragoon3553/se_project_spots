@@ -1,5 +1,25 @@
 .card {
   font-family: "Poppins", Arial, Helvetica, sans-serif;
+  position: relative;
+}
+
+.card__delete-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-image: url(../images/delete.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 32px;
+  width: 32px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.card__delete-btn:hover {
+  background-image: url(../images/delete-hover.svg);
 }
 
 .card__image {
@@ -41,9 +61,15 @@
   opacity: 0.4;
   cursor: pointer;
 }
-
+.card__like-btn_active {
+  background-image: url(../images/like-active.svg);
+  opacity: 1;
+}
 .card__like-btn:hover {
   opacity: 1;
+}
+.card__like-btn_active:hover {
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 630px) {
