@@ -144,7 +144,7 @@ editProfileCloseBtn.addEventListener("click", () => {
 newPostBtn.addEventListener("click", () => {
   openModal(newPostModal);
   closeOnOverlay(newPostModal);
-  escClose();
+  closeOnEscape();
 });
 
 newPostCloseBtn.addEventListener("click", () => {
