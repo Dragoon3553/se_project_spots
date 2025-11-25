@@ -87,14 +87,14 @@ const getCardElement = (data) => {
     modalImgEl.alt = data.name;
     modalCaptionEl.textContent = data.name;
     openModal(imgPreviewModal);
-    clickClose(imgPreviewModal);
-    escClose();
+    closeOnOverlay(imgPreviewModal);
+    closeOnEscape();
   });
 
   return cardElement;
 };
 
-function closeFunc(e) {
+function addEscapeListener(e) {
   if (e.key === "Escape") {
     const modalEl = document.querySelector(".modal_is-opened");
     closeModal(modalEl);
@@ -106,10 +106,10 @@ function openModal(modal) {
 }
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
-  document.removeEventListener("keydown", closeFunc);
+  document.removeEventListener("keydown", addEscapeListener);
 }
 
-const clickClose = (modal) => {
+const closeOnOverlay = (modal) => {
   const modalBck = document.querySelectorAll(".modal");
   modalBck.forEach((input) => {
     input.addEventListener("click", function (e) {
@@ -120,8 +120,8 @@ const clickClose = (modal) => {
   });
 };
 
-const escClose = () => {
-  document.addEventListener("keydown", closeFunc);
+const closeOnEscape = () => {
+  document.addEventListener("keydown", addEscapeListener);
 };
 
 editProfileBtn.addEventListener("click", () => {
@@ -133,8 +133,8 @@ editProfileBtn.addEventListener("click", () => {
     [editProfileNameInput, editProfileDescriptionInput],
     settings
   );
-  clickClose(editProfileModal);
-  escClose();
+  closeOnOverlay(editProfileModal);
+  closeOnEscape();
 });
 
 editProfileCloseBtn.addEventListener("click", () => {
@@ -143,7 +143,7 @@ editProfileCloseBtn.addEventListener("click", () => {
 
 newPostBtn.addEventListener("click", () => {
   openModal(newPostModal);
-  clickClose(newPostModal);
+  closeOnOverlay(newPostModal);
   escClose();
 });
 

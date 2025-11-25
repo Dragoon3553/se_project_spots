@@ -127,12 +127,12 @@
   opacity: 0.8;
 }
 
-.modal__btn-inactive {
+.modal__btn_inactive {
   opacity: 0.5;
   cursor: default;
 }
 
-.modal__btn-inactive:hover {
+.modal__btn_inactive:hover {
   opacity: 0.5;
 }
 
