@@ -94,6 +94,10 @@
   cursor: pointer;
 }
 
+.modal__input_type_error {
+  border: solid 1px rgba(255, 0, 0, 0.6);
+}
+
 .modal__input::placeholder {
   color: #2121214d;
 }
@@ -101,7 +105,13 @@
   border-color: rgba(33, 33, 33, 1);
 }
 
-.modal__submit-btn {
+.modal__error {
+  display: block;
+  color: rgba(255, 0, 0, 0.7);
+  margin-top: 8px;
+}
+
+.modal__btn {
   border: none;
   max-width: 156px;
   background-color: #212121;
@@ -112,8 +122,18 @@
   line-height: 1;
   cursor: pointer;
 }
-.modal__submit-btn:hover {
+
+.modal__btn:hover {
   opacity: 0.8;
+}
+
+.modal__btn-inactive {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.modal__btn-inactive:hover {
+  opacity: 0.5;
 }
 
 .modal__img-container {
@@ -173,7 +193,7 @@
     line-height: 16px;
   }
 
-  .modal__submit-btn {
+  .modal__btn {
     max-width: none;
   }
 

@@ -44,6 +44,7 @@ const newPostBtn = document.querySelector(".profile__add-btn");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
 const newPostForm = newPostModal.querySelector(".modal__form");
+const cardSubmitBtn = newPostModal.querySelector(".modal__btn");
 
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
@@ -86,22 +87,54 @@ const getCardElement = (data) => {
     modalImgEl.alt = data.name;
     modalCaptionEl.textContent = data.name;
     openModal(imgPreviewModal);
+    clickClose(imgPreviewModal);
+    escClose();
   });
 
   return cardElement;
 };
+
+function closeFunc(e) {
+  if (e.key === "Escape") {
+    const modalEl = document.querySelector(".modal_is-opened");
+    closeModal(modalEl);
+  }
+}
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
 }
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+  document.removeEventListener("keydown", closeFunc);
 }
+
+const clickClose = (modal) => {
+  const modalBck = document.querySelectorAll(".modal");
+  modalBck.forEach((input) => {
+    input.addEventListener("click", function (e) {
+      if (e.target === modal) {
+        closeModal(e.target);
+      }
+    });
+  });
+};
+
+const escClose = () => {
+  document.addEventListener("keydown", closeFunc);
+};
 
 editProfileBtn.addEventListener("click", () => {
   openModal(editProfileModal);
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
+  resetValidation(
+    editProfileForm,
+    [editProfileNameInput, editProfileDescriptionInput],
+    settings
+  );
+  clickClose(editProfileModal);
+  escClose();
 });
 
 editProfileCloseBtn.addEventListener("click", () => {
@@ -110,6 +143,8 @@ editProfileCloseBtn.addEventListener("click", () => {
 
 newPostBtn.addEventListener("click", () => {
   openModal(newPostModal);
+  clickClose(newPostModal);
+  escClose();
 });
 
 newPostCloseBtn.addEventListener("click", () => {
@@ -141,6 +176,7 @@ function handleAddCardSubmit(evt) {
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
   newPostForm.reset();
+  disabledBtn(cardSubmitBtn, settings);
   closeModal(newPostModal);
 }
 
