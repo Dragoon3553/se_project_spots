@@ -49,7 +49,7 @@ const avatarForm = avatarModal.querySelector(".modal__form");
 // Delete form elements
 const deleteModal = document.querySelector("#delete-modal");
 const deleteForm = deleteModal.querySelector(".modal__form");
-const deleteCloseBtn = deleteModal.querySelector(".modal__close-btn");
+const deleteCancelBtn = deleteModal.querySelector(".modal__btn_type_cancel");
 
 // Forms / Inputs
 const editProfileForm = editProfileModal.querySelector(".modal__form");
@@ -151,6 +151,8 @@ closeButtons.forEach((button) => {
   const popup = button.closest(".modal");
   button.addEventListener("click", () => closeModal(popup));
 });
+
+deleteCancelBtn.addEventListener("click", () => closeModal(deleteModal));
 
 function closeOnOverlay() {
   const modals = document.querySelectorAll(".modal");
