@@ -191,7 +191,7 @@ deleteForm.addEventListener("submit", handleDeleteSubmit);
 
 function handleEditProfileSubmit(evt) {
   function makeRequest() {
-    api
+    return api
       .editUserInfo({
         name: editProfileNameInput.value,
         about: editProfileDescriptionInput.value,
@@ -200,6 +200,7 @@ function handleEditProfileSubmit(evt) {
         profileNameEl.textContent = data.name;
         profileDescriptionEl.textContent = data.about;
         closeModal(editProfileModal);
+        disabledBtn(evt.submitter, settings);
       });
   }
   handleSubmit(makeRequest, evt);
@@ -210,6 +211,7 @@ function handleAvatarSubmit(evt) {
     return api.editAvatarInfo({ avatar: avatarInput.value }).then((data) => {
       profileAvatarEl.src = data.avatar;
       closeModal(avatarModal);
+      disabledBtn(evt.submitter, settings);
     });
   }
   handleSubmit(makeRequest, evt);
@@ -235,8 +237,7 @@ function handleAddCardSubmit(evt) {
       const cardElement = getCardElement(data);
       cardsList.prepend(cardElement);
 
-      newPostForm.reset();
-      disabledBtn(cardSubmitBtn, settings);
+      disabledBtn(evt.submitter, settings);
       closeModal(newPostModal);
     });
   }
