@@ -4,7 +4,7 @@ An interactive image sharing application
 
 ## Description
 
-Users will be able to add and remove photos, like photos from other users, and make minor adjustments to their profile. Includes a responsive design, which adapts to different screen sizes.
+Users will be able to add and remove photos, like photos, and make adjustments to their profile. Adjustments include changing the profile photo, name and description. Includes a responsive design, which adapts to different screen sizes. Changes made to profile, like button clicks, and added cards with descriptions stay upon page reload.
 
 ## Tech Stack
 
@@ -12,6 +12,8 @@ Users will be able to add and remove photos, like photos from other users, and m
 - CSS Grid
 - Media Queries
 - Responsive Design
+- JavaScript Classes
+- Api
 
 ## Deployment
 
